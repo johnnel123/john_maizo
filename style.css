@@ -1,3 +1,6 @@
+/*instructor john nel lim 
+for final hands-on exam*/
+
 /*
 
 font-family: 'Oswald', sans-serif;
@@ -20,9 +23,7 @@ body {
 }
 
 .container {
-    display: block;
-    max-width: 1180px;
-    margin-inline: auto;
+
 }
 
 ul, li, a {
@@ -33,7 +34,7 @@ ul, li, a {
 /* ! Header Section */
 
 .hero_expanded {
-    background: url("image/hero.jpg") no-repeat top / cover;
+    background: url("img/hero.jpg") no-repeat top / cover;
     width: 100%;
     box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, .5);
     padding-bottom: 30px;
@@ -53,9 +54,7 @@ ul, li, a {
 
 .header_container nav ul {
     display: flex;
-    justify-content: center;
     gap: 80px;    
-    flex-wrap: wrap;
 }
 
 .header_container nav ul li a {
@@ -76,7 +75,6 @@ ul, li, a {
 .header_container nav ul li a:hover {
     color: rgb(45, 45, 45);
     text-decoration: underline;
-    transition: 500ms ease;
 }
 
 /* Hero Section */
@@ -105,7 +103,6 @@ ul, li, a {
     background-color: #FF9900;
     border-radius: 25px;
     display: block;
-    max-width: 200px;
     text-align: center;
     font-weight: 400;
 }
@@ -168,6 +165,9 @@ main {
 }
 
 
+/*instructor john nel lim 
+for final hands-on exam*/
+
 /* Bontrager Section */
 
 .bontrager_module {
@@ -227,7 +227,7 @@ main {
 /* Contact Section */
 
 .contact_expanded {
-    background: url("image/contact_image.jpg") no-repeat top / cover;
+    background: url("image/.jpg") no-repeat top / cover;
     padding-block: 30px;
     color: #fff;
     box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, .3);
@@ -287,7 +287,7 @@ main {
 
 /* Footer Section */
 
-footer {
+ {
     background-color: #828282;
     color: #fff;
     padding-top: 20px;
@@ -352,3 +352,7 @@ footer .contact_module ul li h2 span {
 footer .copyright {
     text-align: center;
 }
+
+
+/*instructor john nel lim 
+for final hands-on exam*/
