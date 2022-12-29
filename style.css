@@ -1,5 +1,84 @@
-/*instructor john nel lim 
-for final hands-on exam*/
+html {
+  scroll-behavior: smooth;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+}
+
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+}
+
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+img,
+picture,
+svg {
+  max-width: 100%;
+  display: block;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+ul,
+li,
+a {
+  text-decoration: none;
+  list-style-type: none;
+}
+
+/* ! Start Here */
+
+.container {
+  max-width: 1300px;
+  margin-inline: auto;
+  padding-inline: 2em;
+}
+
+body {
+  font-size: 1rem;
+  font-family: "Roboto", sans-serif;
+}
 
 /*
 
@@ -9,356 +88,455 @@ font-family: 'Roboto Condensed', sans-serif;
 
 */
 
-html {
-    scroll-behavior: smooth;
+header {
+  position: relative;
+  height: 100vh;
 }
 
-body {
-    font-size: 1.125rem;
-    margin: 0;
-    padding: 0;
-    font-family: 'Roboto', sans-serif;
-
-    overflow-x: hidden;
+header .logo_nav,
+header .logo_nav img {
+  display: block;
+  max-width: 246px;
+  max-height: 80px;
 }
 
-.container {
+header nav ul li a {
+  text-transform: uppercase;
+  color: #fff;
+  font-size: 1.1rem;
+  transition: 350ms ease-in-out;
+  position: relative;
+}
+
+header nav ul li a:is(:hover, :focus) {
+  color: #000;
+}
+
+header .buttony {
+  display: none;
+}
+
+@media (min-width: 50em) {
+  header .logo_nav,
+  header .logo_nav img {
     margin-inline: auto;
-    max-width: 1180px;
-    display: block;
-    position: relative;
-}
+  }
 
-ul, li, a {
-    list-style-type: none;
-    text-decoration: none;
-}
-
-/* ! Header Section */
-
-.hero_expanded {
-    background: url("image/hero.jpg") no-repeat top / cover;
-    width: 100%;
-    box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, .5);
-    padding-bottom: 30px;
-}
-
-.header_container {
-    padding-top: 20px;
-    padding-bottom: 0.1px;
-}
-
-.logo_nav, .logo_nav img {
-    max-width: 246px;
-    max-height: 80px;
-    display: block;
-    margin-inline: auto;
-}
-
-.header_container nav ul {
+  header nav ul {
     display: flex;
-    gap: 80px;    
+    gap: 4em;
     justify-content: center;
+    padding-block: 1em;
+  }
+
+  header nav ul li a::before {
+    content: '';
+    position: absolute;
+    background-color: #000;
+    width: 0;
+    height: 3px;
+    top: 20px;
+    left: 50%;
+    transform: translate(-50%, 0);
+
+    transition: 350ms ease-in-out;
+  }
+
+  header nav ul li a:is(:hover, :focus)::before {
+    width: 120%;
+  }
+
+  header .header_container {
+    transition: 450ms ease;
+  }
+
+  header .header_container:is(:hover, :focus) {
+    background-color: rgba(217, 217, 217, 0.571);
+  }
+
+  
+
+  header .header_container .spacer {
+    padding-block-start: 1em;
+  }
 }
 
-.header_container nav ul li a {
-    color: #fff;
-    text-transform: uppercase;
-}
+@media (max-width: 50em) {
+  header .primary_nav {
+    display: none;
+    position: absolute;
+    background-color: rgba(185, 193, 193, 0.942);
+    padding: 1.5em;
+    border-radius: 10px;
+    max-width: 15em;
+    right: 0;
+    margin-inline-end: 2em;
+  }
 
-.header_container:hover {
-    background-color: rgba(217, 217, 217, .6);
-    transition: 500ms ease-out;
-}
-
-.header_container:hover > .header_container nav ul li a {
-    color: #000;
-    transition: 500ms ease;
-}
-
-.header_container nav ul li a:hover {
-    color: rgb(45, 45, 45);
-    text-decoration: underline;
-}
-
-/* Hero Section */
-
-.hero_module .container h1 {
-    color: #fff;
-    font-weight: 700;
-    font-size: 4rem;
-    white-space: pre-line;
-}
-
-.hero_module .container h1 span {
-    color: #FF9900;
-}
-
-#hero_slogan {
-    padding-block: 50px;
-}
-
-#hero_slogan a {
-    font-size: 1.8rem;
-    color: #fff;
-    font-family: 'Oswald', sans-serif;
-    max-width: 203px;
-    font-weight: bold;
-    line-height: 60px;
-    background-color: #FF9900;
-    border-radius: 25px;
+  header .logo_nav,
+  header .logo_nav img {
     display: block;
+    max-width: 226px;
+    max-height: 60px;
+    margin-block-start: 2em;
+  }
+
+  header .primary_nav ul {
+    display: block;
+  }
+
+  header nav ul li {
     text-align: center;
-    font-weight: 400;
+    padding-block: 0.7em;
+  }
+
+  header .primary_nav[data-visible] {
+    display: block;
+  }
+
+  header .buttony {
+    display: block;
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+    padding: 0.5em;
+    right: 0;
+    position: absolute;
+    top: 0.8em;
+    font-size: 2rem;
+    z-index: 100;
+  }
+
+  header .buttony .close {
+    display: none;
+  }
+
+  header .logo_nav, header .logo_nav img {
+    max-width: 140px;
+    margin-block-start: 3.2em;
+
+  }
+
+  header .slogan_area {
+    margin-block-start: 1.2em;
+  }
 }
 
-#hero_slogan a:hover {
-    background-color: #fff;
-    color: #FF9900;
-    transition: 500ms ease;
+header .hero_expanded {
+  background: url("image/hero.jpg") no-repeat top / cover;
+  box-shadow: inset 0 0 0 1000vh rgba(0, 0, 0, 0.5);
+  position: absolute;
+  width: 100%;
+  height: 100vh;
 }
 
-/* ! For Main */
+header .grid_center {
+  display: grid;
+  align-items: center;
+  height: 100vh;
+}
 
-main {
-    font-family: 'Roboto Condensed', sans-serif;
+header .grid_center div h1 {
+  color: #fff;
+  font-weight: 700;
+  font-size: 4rem;
+  max-width: 15em;
+  margin-block-end: 1em;
+}
+
+header .grid_center div h1 span {
+  color: #ff9900;
+}
+
+header .grid_center div a {
+  display: block;
+  color: #fff;
+  font-size: 2rem;
+  background-color: #ff9900;
+  max-width: 6.5em;
+  text-align: center;
+  border-radius: 25px;
+  line-height: 1.7;
+  font-weight: 400;
+  font-family: "Oswald", sans-serif;
+  transition: 350ms ease;
+  margin-block-end: 6em;
+}
+
+header .grid_center div a:is(:hover, :focus) {
+  background-color: #fff;
+  color: #ff9900;
+}
+
+@media (max-width: 50em) {
+  header .grid_center div h1 {
+    font-size: 2.5rem;
+  }
+
+  header .grid_center div a {
+    font-size: 1.6rem;
+    margin-block-start: 1.5em;
+  }
 }
 
 /* About Section */
 
 .about_module {
-    position: relative;
-    padding-top: 20px;
-    padding-bottom: 100px;
-    text-align: center;
-    z-index: 9;
+  padding-block-start: 50px;
+  padding-block-end: 100px;
+  text-align: center;
 }
 
-.about_module .container h1 {
-    font-size: 3.75rem;
-    font-weight: 400;
+.about_module h2 {
+  font-weight: 400;
+  font-size: 3.75rem;
 }
 
-.about_module .container p {
-    white-space: pre-line;
-    max-width: 100ch;
-    margin-inline: auto;
-    line-height: 30px;
+.about_module p {
+  white-space: pre-line;
+  max-width: 100ch;
+  margin-inline: auto;
+  line-height: 30px;
 }
 
-/* Flexbox & Default Configs for Bontrager and Polar Sections */
+@media (max-width: 31.313em) {
+  .about_module h2 {
+    font-size: 2.7rem;
+  }
 
-.image_column {
-    display: flex;
-    gap: 30px;
-    flex-wrap: wrap;
-    justify-content: center;
+  .about_module p {
+    font-size: 0.8rem;
+  }
 }
 
-.spacer {
-    font-size: 1.125rem;
-    color: #000;
+/* Shop Section */
+.shop_module {
+  padding-block-end: 100px;
 }
 
-.image_column .image_width {
-    font-size: 0.875rem;
-    color: #686868;
+.shop_module .flex_wrap .box {
+  max-width: 300px;
 }
 
-.image_column .image_width span {
-    height: 10px;
-    display: block;
+.shop_module .flex_wrap .box a {
+  color: #000;
+  font-size: 1.125rem;
 }
 
+.shop_module .flex_wrap .box .spacer {
+  height: 0.7em;
+  display: block;
+}
 
-/*instructor john nel lim 
-for final hands-on exam*/
+.shop_module .flex_wrap .box p {
+  font-size: 0.875rem;
+  color: #686868;
+}
+
+.shop_module .flex_wrap {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
 
 /* Bontrager Section */
-
-.bontrager_module {
-    background-color: #D9D9D9;
-    padding-top: 50px;
-    padding-bottom: 100px;
+.bontrager_section {
+  background-color: #d9d9d9;
+  padding-block-end: 100px;
 }
 
-.bontrager_module .container .bontrager_logo {
-    max-width: 382px;
-    max-height: 100px;
-}
-
-.bontrager_module .image_column .image_width {
-    max-width: 300px;
-}
-
-.bontrager_module .image_column .image_width .img_a {
-    max-height: 225px;
-    display: block;
-}
-
-.bontrager_module .image_column .image_width .img_a img {
-    max-width: 300px;
-    max-height: 225px;
-    display: block;
+.bontrager_section .bontrager_logo {
+  max-width: 382px;
+  max-height: 10em;
 }
 
 /* Polar Section */
 
-.polar_module {
-    padding-block: 50px;
-    padding-bottom: 100px;
+.polar_section .polar_logo {
+  max-width: 260px;
+  max-height: 10em;
 }
 
-.polar_module .polar_logo {
-    max-width: 260px;
-    max-height: 100%
-}
+@media (max-width: 26.25em) {
+  .bontrager_section .bontrager_logo {
+    max-width: 100%;
+    margin-inline: auto;
+  }
 
-.polar_module .image_column .image_width {
-    max-width: 300px;
+  .polar_section .polar_logo {
+    max-width: 70%;
+    margin-inline: auto;
+  }
 }
-
-.polar_module .image_column .image_width img_a {
-    max-height: 300px;
-    display: block;
-}
-
-.polar_module .image_column .image_width .img_a img {
-    max-width: 300px;
-    max-height: 300px;
-    display: block;
-}
-
 
 /* Contact Section */
 
-.contact_expanded {
-    background: url("image/contact_image.jpg") no-repeat top / cover;
-    padding-block: 30px;
-    color: #fff;
-    box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, .3);
+.contact_module .contact_expanded {
+  background: url("image/contact_image.jpg") no-repeat top / cover;
+  padding-block: 50px;
+  box-shadow: inset 0 0 0 1000vh rgba(0, 0, 0, 0.3);  
 }
 
-.contact_module .contact_expanded .container h1 {
-    font-size: 3.75rem;
-    font-weight: 400;
+.contact_module h2 {
+  font-size: 3.75rem;
+  color: #fff;
+  font-weight: 400;
+  text-align: center;
+}
+
+.contact_module .text_area {
+  color: #fff;
+  margin-block-end: 15em;
+  max-width: 30em;
+}
+
+.contact_module .grid_column {
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 10em;
+  justify-content: center;
+  align-items: center;
+  padding-block-start: 3em;
+}
+
+
+.contact_module .fill_up_area {
+  max-width: 35em;
+}
+
+.contact_module .fill_up_area #message {
+  resize: none;
+}
+
+.contact_module .fill_up_area .text {
+  width: 100%;
+  margin-block: 0.5em;
+  padding: 0.7em;
+  border-radius: 15px;
+  border: 0;
+}
+
+.contact_module .fill_up_area .button {
+  display: block;
+  margin-inline-start: auto;
+  background-color: #12A721;
+  color: #fff;
+  padding: 0.5em;
+  border-radius: 20px;
+  cursor: pointer;
+  border: 0;
+  transition: 350ms ease-in-out;
+}
+
+.contact_module .fill_up_area .button:is(:hover, :focus) {
+  background-color: #fff;
+  color: #12A721;
+}
+
+@media (max-width: 50em) {
+  .contact_module .grid_column {
+    grid-template-columns: none;
+    gap: 0;
+  }
+
+  .contact_module .text_area {
+    margin-block-end: 1em;
     text-align: center;
-}
+    margin-inline: auto;
+  }
 
-.contact_module .contact_expanded .container p {
-    white-space: pre-line;
-    padding-right: 40px;
-}
-
-.middle {
-    display: flex;
-    justify-content: center;
-}
-
-.input_module {
-    display: grid;
-    gap: 20px;
-    width: 480px;
-}
-
-.input {
-    border: 0;
-    border-radius: 10px;
-    padding-inline: 10px;
-    height: 50px;
-}
-
-.message {
-    padding-bottom: 150px;
-}
-
-.middle .input_module .button {
-    width: 160px;
-    border: 0;
-    font-size: 1.125rem;
-    line-height: 40px;
-    border-radius: 20px;
-    position: relative;
-    margin-left: auto;
-    background-color: #12A721;
-    color: #fff;
-    cursor: pointer;
-}
-
-.middle .input_module .button:hover {
-    color: #12A721;
-    background-color: #fff;
-    transition: 500ms ease-in-out;
+  .contact_module .fill_up_area .button {
+    margin-inline: auto;
+    margin-block-start: 3em;
+  }
 }
 
 /* Footer Section */
 
 footer {
-    background-color: #828282;
-    color: #fff;
-    padding-top: 20px;
-    padding-bottom: 1px;
+  background-color: #828282;
+  color: #fff;
 }
 
 footer .logo_footer, footer .logo_footer img {
-    max-width: 180px;
-    height: 80px;
-    display: block;
+  display: block;
+  max-width: 180px;
+  max-height: 80px;
 }
 
-footer h1{
-    font-size: 1.125rem;
-    font-weight: 400;
+footer i {
+  font-size: 30px;
+  color: #fff;
+
+  transition: 350ms ease;
 }
 
-footer h2 {
-    font-size: 1.25rem;
-}
-
-footer .text_module {
-    display: flex;
-    justify-content: center;
-    gap: 100px;
-}
-
-footer .text_module .connect_module .icons {
-    display: flex;
-    gap: 20px;
-}
-
-footer .text_module .connect_module a span {
-    font-size: 30px;
-    color: #fff;
-}
-
-footer .text_module .connect_module a span:hover {
-    color: rgb(49, 49, 49);
-    transition: 500ms ease;
-}
-
-footer .text_module .connect_module a {
-    max-width: 30px;
-    max-height: 30px;
-    display: block;
-}
-
-footer .address_module p {
-    white-space: pre-line;
-}
-
-footer .contact_module ul {
-    padding-left: 0;
-}
-
-footer .contact_module ul li h2 span {
-    font-size: 25px;
-    padding-right: 10px;
+footer i:is(:hover, :focus) {
+  color: rgb(49, 49, 49);
 }
 
 footer .copyright {
-    text-align: center;
+  margin-block: 3em;
+  text-align: center;
 }
 
+footer h3 {
+  font-size: 1.125rem;
+  font-weight: bold;
+  margin-block: 0.7em;
+}
 
-/*instructor john nel lim 
-for final hands-on exam*/
+footer .flex_wrap {
+  display: flex;
+  gap: 2em;
+  justify-content: space-around;
+  max-width: 55em;
+  margin-inline: auto;
+
+}
+
+footer .connect_module ul {
+  display: flex;
+  gap: 1em;
+}
+
+footer .address_module p {
+  white-space: pre-line;
+}
+
+footer .spacer {
+  padding-block-start: 1em;
+}
+
+footer .contact_module i {
+  padding-inline-end: 0.3em;
+}
+
+footer .contact_module p {
+  padding-block-end: 0.4em;
+}
+
+@media (max-width: 50em) {
+  footer .logo_footer {
+    margin-inline: auto;
+  }
+  footer .flex_wrap {
+    display: grid;
+    gap: 1em;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  footer .connect_module {
+    margin-block-start: 1em;
+  }
+
+  footer .connect_module ul {
+    display: flex;
+    gap: 1em;
+    margin-inline: auto;
+    justify-content: center;
+  }
+}
